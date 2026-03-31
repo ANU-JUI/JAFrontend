@@ -364,6 +364,16 @@ svg {
 .ghost-line-short {
   width: 84px;
 }
+.nav-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+.brand-lockup strong {
+  display: flex;
+  align-items: center;
+  gap: 8px;   /* space between logo & name */
+}
 
 .ghost-mini-label {
   display: block;

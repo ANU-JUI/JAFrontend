@@ -229,7 +229,7 @@ export default function AuthPage() {
       <header className="auth-topbar">
         <Link className="brand-lockup" to="/">
           <span className="brand-kicker">AI Job Match</span>
-          <strong>Job Assistant</strong>
+          <strong><img src="/logo.png" alt="Hirix Logo" className="nav-logo" />Hirix</strong>
         </Link>
         <div className="auth-topbar-actions">
           <button

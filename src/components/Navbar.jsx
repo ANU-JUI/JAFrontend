@@ -11,8 +11,10 @@ export default function Navbar({ onLogout }) {
     <nav className="new-nav">
 
       {/* LEFT */}
-     <Link style={{ fontSize: "20px", fontWeight: "bold" }} to="/dashboard">
-        Job Assistant
+      
+     <Link style={{ fontSize: "20px", fontWeight: "bold" , display: "flex", alignItems: "center",gap: "8px"}} to="/dashboard">
+     <img src="/logo.png" alt="Hirix Logo" className="nav-logo" />
+        Hirix
       </Link>
 
       {/* RIGHT */}
