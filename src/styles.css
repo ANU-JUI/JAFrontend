@@ -1524,4 +1524,13 @@ select:focus {
     font-size: 1.6rem !important;
     line-height: 1.2;
   }
+  .card-actions .ghost-button,
+  .card-actions .primary-button,
+  .primary-button,
+  .ghost-button,
+  .google-button {
+    width: 100%;
+    justify-content: center;
+    display: inline-flex;
+  }
 }
