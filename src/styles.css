@@ -1275,9 +1275,7 @@ select:focus {
   .page-shell {
     width: calc(100% - 20px);
   }
-   .auth-layout {
-    padding-top: 40px;   /* 🔥 reduce from 108px */
-  }
+  
    .auth-card {
     padding: 18px;     /* reduce padding */
     border-radius: 20px;
@@ -1285,7 +1283,41 @@ select:focus {
    .auth-card h2 {
     font-size: 1.4rem;
   }
+   .hero-panel {
+    min-height: auto !important;        /* remove full height */
+    padding: 18px;
+  }
+  .hero-highlight-row {
+    margin-top: 16px;
+    gap: 8px;
+  }
 
+  .hero-primary-action {
+    margin-top: 16px;
+    gap: 10px;
+  }
+
+  .feature-grid {
+    margin-top: 16px;
+    gap: 12px;
+  }
+   .hero-panel h1 {
+    font-size: 1.8rem;   /* 🔥 smaller */
+    line-height: 1.2;
+  }
+
+  .hero-copy {
+    font-size: 0.9rem;
+  }
+   .hero-start-button,
+  .hero-secondary-button {
+    min-height: 44px;
+    font-size: 0.9rem;
+  }
+ .hero-band,
+  .feature-grid article:nth-child(3) {
+    display: none;
+  }
   .auth-intro {
     font-size: 0.9rem;
   }
@@ -1456,5 +1488,41 @@ select:focus {
   .modal-close {
     width: 36px;
     height: 36px;
+  }
+}
+@media (max-width: 720px) {
+
+  .hero-panel {
+    min-height: auto !important;
+    padding: 16px !important;
+  }
+  .auth-layout {
+    display: flex !important;              /* 🔥 FIX */
+    align-items: center;                   /* vertical center */
+    justify-content: center;               /* horizontal center */
+
+    min-height: 100vh;
+    padding: 16px !important;
+  }
+
+  .auth-card {
+    width: 100%;
+    max-width: 400px;                      /* control size */
+    margin: 0 auto;
+  }
+
+  .auth-layout {
+    padding-top: 100px !important;
+  }
+
+  .auth-layout,
+  .page-shell {
+    width: 100% !important;
+    padding: 16px;
+  }
+
+  .hero-panel h1 {
+    font-size: 1.6rem !important;
+    line-height: 1.2;
   }
 }
