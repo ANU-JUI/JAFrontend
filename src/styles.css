@@ -1502,7 +1502,6 @@ select:focus {
     justify-content: center;               /* horizontal center */
 
     min-height: 100vh;
-    padding: 16px !important;
   }
 
   .auth-card {
