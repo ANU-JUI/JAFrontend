@@ -91,6 +91,7 @@ svg {
   display: block;
   position: relative;
   padding-top: 108px;
+  overflow-y: auto;
 }
 
 .hero-panel,
@@ -200,9 +201,6 @@ svg {
   justify-content: center;
 
   border-radius: 50%;
-
-  background: linear-gradient(to right, #a855f7, #22d3ee); /* purple → cyan */
-
   color: white;
   font-weight: bold;
 }
@@ -1276,6 +1274,20 @@ select:focus {
   .auth-layout,
   .page-shell {
     width: calc(100% - 20px);
+  }
+   .auth-layout {
+    padding-top: 40px;   /* 🔥 reduce from 108px */
+  }
+   .auth-card {
+    padding: 18px;     /* reduce padding */
+    border-radius: 20px;
+  }
+   .auth-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .auth-intro {
+    font-size: 0.9rem;
   }
  .auth-topbar {
     display: flex;

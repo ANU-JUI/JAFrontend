@@ -219,6 +219,9 @@ export default function AuthPage() {
           <strong><img src="/logo.png" alt="Hirix Logo" className="nav-logo" />Hirix</strong>
         </Link>
         <div className="auth-topbar-actions">
+           <div className="avatar" style={{background: user?  "linear-gradient(to right, #a855f7, #22d3ee)" : "none"}}>
+          {user?.email.charAt(0).toUpperCase() || ""}
+        </div>
           <button
             className="nav-pill is-active"
             onClick={handleTopRightAction}

@@ -20,11 +20,16 @@ export default function Navbar({ onLogout }) {
       {/* RIGHT */}
       <div className="right-nav">
 
-        {/* Avatar */}
-        <div className="avatar">
-          {firstLetter}
-        </div>
-
+        <div
+  className="avatar"
+  style={{
+    background: firstLetter
+      ? "linear-gradient(to right, #a855f7, #22d3ee)"
+      : "none",
+  }}
+>
+  {firstLetter}
+</div>
         {/* Logout */}
       <button className="nav-pill" onClick={onLogout} type="button"> Logout </button>
 
