@@ -243,7 +243,7 @@ export default function AuthPage() {
             </p>
 
             <div className="hero-primary-action">
-              <button className="primary-button hero-start-button" onClick={() => openAuthModal(true)} type="button">
+              <button className="primary-button hero-start-button" onClick={() => user? navigate('/dashboard') : openAuthModal(true)} type="button">
                 Get Started
               </button>
               <a className="ghost-button hero-secondary-button" href="#feature-grid">
@@ -373,7 +373,6 @@ export default function AuthPage() {
               </div>
               <p className="auth-intro">
                 Use your email and password or continue with Google through Firebase authentication.
-                Password reset and email verification use Firebase&apos;s built-in email templates.
               </p>
 
               <button
