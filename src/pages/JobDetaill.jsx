@@ -6,6 +6,7 @@ import { buildPreferencePayload } from "../utils/preferences";
 
 export default function JobDetaill() {
   const { jobId } = useParams();
+  const [showBanner, setShowBanner] = useState(true);
   const navigate = useNavigate();
   const { user, profile } = useAuth();
   const [job, setJob] = useState(null);
@@ -67,21 +68,33 @@ export default function JobDetaill() {
 
       {error ? <div className="error-banner">{error}</div> : null}
 
-      {loading ? (
-        <div className="panel"><p className="empty-state">Loading job detail...</p></div>
-      ) : job ? (
-        <div className="detail-layout">
-          <section className="panel">
-            <div className="detail-meta">
-              <div><span>Company</span><strong>{job.company}</strong></div>
-              <div><span>Location</span><strong>{job.location}</strong></div>
-              <div><span>Experience</span><strong>{job.experienceRequired} years</strong></div>
-              <div><span>Deadline</span><strong>{job.deadline}</strong></div>
-              <div><span>Match score</span><strong>{job.matchScore}%</strong></div>
-            </div>
-            <h2>Job description</h2>
-            <p className="description-block">{job.description}</p>
-          </section>
+{loading ? (
+  <div className="panel">
+    <p className="empty-state">Loading job detail...</p>
+  </div>
+) : job ? (
+  <>
+    {/* ✅ Fallback banner */}
+    {job?.usedFallback && (
+      <div className="info-banner">
+        No jobs found in selected location. Showing global results 🌍
+      <button onClick={() => setShowBanner(false)}>✕</button>
+      </div>
+    )}
+
+    <div className="detail-layout">
+      <section className="panel">
+        <div className="detail-meta">
+          <div><span>Company</span><strong>{job.company}</strong></div>
+          <div><span>Location</span><strong>{job.location}</strong></div>
+          <div><span>Experience</span><strong>{job.experienceRequired} years</strong></div>
+          <div><span>Deadline</span><strong>{job.deadline}</strong></div>
+          <div><span>Match score</span><strong>{job.matchScore}%</strong></div>
+        </div>
+
+        <h2>Job description</h2>
+        <p className="description-block">{job.description}</p>
+      </section>
 
           <aside className="panel">
             <h2>Fit summary</h2>
@@ -118,6 +131,7 @@ export default function JobDetaill() {
             </button>
           </aside>
         </div>
+        </>
       ) : null}
     </div>
   );
