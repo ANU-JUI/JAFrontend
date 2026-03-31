@@ -37,19 +37,6 @@ export default function AuthPage() {
     : undefined;
 
   useEffect(() => {
-    if (!user) {
-      return;
-    }
-
-    if (profile?.onboardingCompleted) {
-      navigate("/dashboard", { replace: true });
-      return;
-    }
-
-    navigate("/onboarding", { replace: true });
-  }, [navigate, profile, user]);
-
-  useEffect(() => {
     setShowAuthModal(location.pathname === "/auth");
   }, [location.pathname]);
 
