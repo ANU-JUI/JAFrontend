@@ -12,6 +12,8 @@ export default function JobDetaill() {
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+const [usedFallback, setUsedFallback] = useState(false);
+  // ✅ IMPORTANT
 
   const preferences = useMemo(() => {
     if (!user || !profile) {
@@ -20,26 +22,28 @@ export default function JobDetaill() {
     return buildPreferencePayload(user.uid, profile);
   }, [profile, user]);
 
-  useEffect(() => {
-    const load = async () => {
-      if (!preferences || !jobId) {
-        return;
-      }
+ useEffect(() => {
+  const load = async () => {
+    if (!preferences || !jobId) return;
 
-      try {
-        setLoading(true);
-        setError("");
-        const nextJob = await fetchJobDetail(jobId, preferences);
-        setJob(nextJob);
-      } catch (err) {
-        setError(err.message || "Could not load job details.");
-      } finally {
-        setLoading(false);
-      }
-    };
+    try {
+      setLoading(true);
+      setError("");
 
-    load();
-  }, [jobId, preferences]);
+      const nextJob = await fetchJobDetail(jobId, preferences);
+
+      setJob(nextJob);
+      setUsedFallback(nextJob?.usedFallback || false); // ✅ safe
+
+    } catch (err) {
+      setError(err.message || "Could not load job details.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  load();
+}, [jobId, preferences]);
 
   const handleApply = async () => {
     if (!user || !job) {
@@ -75,7 +79,7 @@ export default function JobDetaill() {
 ) : job ? (
   <>
     {/* ✅ Fallback banner */}
-    {job?.usedFallback && (
+    {usedFallback && showBanner &&(
       <div className="info-banner">
         No jobs found in selected location. Showing global results 🌍
       <button onClick={() => setShowBanner(false)}>✕</button>
