@@ -261,6 +261,9 @@ svg {
   color: #fff;
   box-shadow: 0 16px 32px rgba(14, 165, 233, 0.18);
 }
+.card-actions{
+  margin-top: auto;
+}
 
 .hero-actions,
 .card-actions,
@@ -277,6 +280,7 @@ svg {
   gap: 14px;
   margin-left: auto;
   flex-shrink: 0;
+  
 }
 
 .hero-highlight-row {
@@ -1005,6 +1009,9 @@ select:focus {
   box-shadow: 0 18px 42px rgba(2, 8, 23, 0.26);
   position:relative;
   transition: transform 0.24s ease, box-shadow 0.24s ease;
+  flex-direction: column;
+  height: 100%;
+  display: flex;
 }
 
 .job-card-head,
