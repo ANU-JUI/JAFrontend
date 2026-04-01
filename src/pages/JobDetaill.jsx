@@ -27,6 +27,7 @@ const [usedFallback, setUsedFallback] = useState(
   }, [profile, user]);
 
  useEffect(() => {
+  console.log("fallback status in detail page:", usedFallback);
   const load = async () => {
     if (!preferences || !jobId) return;
 
@@ -47,7 +48,6 @@ const [usedFallback, setUsedFallback] = useState(
 
   load();
 }, [jobId, preferences]);
-      console.log("fallback status in detail page:", usedFallback);
 
 
   const handleApply = async () => {
