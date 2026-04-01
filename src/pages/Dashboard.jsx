@@ -51,6 +51,7 @@ export default function Dashboard() {
       setFeed(nextFeed);
       setAnalytics(nextAnalytics);
       setStatusMessage(nextFeed.availableJobs[0]?.gapMessage || "");
+      console.log(nextFeed.useFallback);
     } catch (err) {
       setError(err.message || "Could not load job recommendations.");
     } finally {
