@@ -33,8 +33,6 @@ const [usedFallback, setUsedFallback] = useState(
     try {
       setLoading(true);
       setError("");
-      console.log("fallback status in detail page:", usedFallback);
-
       const nextJob = await fetchJobDetail(jobId, preferences);
 
       setJob(nextJob);
@@ -49,6 +47,8 @@ const [usedFallback, setUsedFallback] = useState(
 
   load();
 }, [jobId, preferences]);
+      console.log("fallback status in detail page:", usedFallback);
+
 
   const handleApply = async () => {
     if (!user || !job) {
