@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams,useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { applyToJob, fetchJobDetail } from "../services/jobApi";
 import { buildPreferencePayload } from "../utils/preferences";
+
 
 export default function JobDetaill() {
   const { jobId } = useParams();
@@ -12,9 +13,12 @@ export default function JobDetaill() {
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-const [usedFallback, setUsedFallback] = useState(false);
+//const [usedFallback, setUsedFallback] = useState(false);
   // ✅ IMPORTANT
-
+const location = useLocation();
+const [usedFallback, setUsedFallback] = useState(
+  location.state?.usedFallback || false
+);
   const preferences = useMemo(() => {
     if (!user || !profile) {
       return null;
@@ -33,7 +37,7 @@ const [usedFallback, setUsedFallback] = useState(false);
       const nextJob = await fetchJobDetail(jobId, preferences);
 
       setJob(nextJob);
-      setUsedFallback(nextJob?.usedFallback || false); // ✅ safe
+      // ❌ REMOVE fallback logic from here
 
     } catch (err) {
       setError(err.message || "Could not load job details.");

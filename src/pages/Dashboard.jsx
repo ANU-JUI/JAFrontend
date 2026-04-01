@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { signOut } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import JobCard from "../components/JobCard";
 import Navbar from "../components/Navbar";
@@ -24,6 +25,7 @@ export default function Dashboard() {
   const [statusMessage, setStatusMessage] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const preferences = useMemo(() => {
     if (!user || !profile) {
@@ -163,7 +165,16 @@ export default function Dashboard() {
         ) : feed.availableJobs.length ? (
           <div className="job-grid">
             {feed.availableJobs.map((job) => (
-              <JobCard key={job.id} job={job} onApply={handleApply} />
+              <JobCard
+  key={job.id}
+  job={job}
+  onApply={handleApply}
+  onClick={() =>
+    navigate(`/jobs/${job.id}`, {
+      state: { usedFallback: feed.useFallback } // 🔥 IMPORTANT
+    })
+  }
+/>
             ))}
           </div>
         ) : (
