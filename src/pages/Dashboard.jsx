@@ -125,6 +125,7 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="insight-list">
+            
             {analytics.topMissingSkills.length ? (
               analytics.topMissingSkills.map((item) => (
                 <div className="insight-row" key={item.skill}>
@@ -134,6 +135,7 @@ export default function Dashboard() {
               ))
             ) : (
               <p className="empty-state">No major skill gaps detected across your current matching jobs.</p>
+              
             )}
           </div>
         </div>

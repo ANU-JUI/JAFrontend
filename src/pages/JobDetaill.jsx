@@ -33,6 +33,7 @@ const [usedFallback, setUsedFallback] = useState(
     try {
       setLoading(true);
       setError("");
+      console.log("fallback status in detail page:", usedFallback);
 
       const nextJob = await fetchJobDetail(jobId, preferences);
 
